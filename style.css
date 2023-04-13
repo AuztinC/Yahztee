@@ -1,0 +1,97 @@
+body{
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	overflow: hidden;
+}
+
+#game-container{
+	display: flex; 
+	justify-content: center;
+	align-items: center; 
+	width: 100%;
+	height: 100%;
+	background-color: darkred;
+	/* background-image: url("https://www.shutterstock.com/shutterstock/videos/8856988/thumb/1.jpg?ip=x480"); */
+	background-size: cover;
+	background-blend-mode: darken;
+}
+#dice-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	
+	width: 20%;
+	height: 80%;
+	box-sizing: border-box;
+	
+	border: 8px ridge gold;
+	background-color: lightseagreen;
+	background-image: url("https://media.freestocktextures.com/cache/9f/5b/9f5b497386d49390d7b7ca43acb68a33.jpg");
+	background-size: cover;
+	background-blend-mode: overlay;
+}
+
+#list-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
+	width: 30%;
+	height: 80%;
+	box-sizing: border-box;
+	
+	border: 8px ridge gold;
+	border-left: 2px;
+	
+	background-color: burlywood;
+	background-image: url("https://media.freestocktextures.com/cache/4d/e6/4de6261b970deb804e557b9bb1dd44ad.jpg");
+	background-blend-mode: luminosity;
+	background-size: cover;
+	
+}
+
+.score-section {
+	background-color: floralwhite;
+	border-collapse: collapse;
+	
+	border: 4px double black;
+	flex-grow: 1;
+	min-width: 80%;
+	/* padding: 24px; */
+}
+
+.roll-button {
+	flex-grow: 1;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	min-width: 50%;
+}
+
+td {
+	border: 1px solid black;
+	margin: 0px;
+	padding: 4px;
+}
+
+.die {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	margin: 5px;
+	width: 75px;
+	height: 75px;
+	background-color: grey;
+	color: black;
+	user-select: none;
+}
+
+.active {
+	background-color: white;
+}
+
+
