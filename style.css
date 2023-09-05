@@ -1,3 +1,8 @@
+* {
+	user-select: none;
+	box-sizing: border-box;
+}
+
 body{
 	width: 100vw;
 	height: 100vh;
@@ -25,7 +30,6 @@ body{
 	
 	width: 20%;
 	height: 80%;
-	box-sizing: border-box;
 	
 	border: 8px ridge gold;
 	background-color: lightseagreen;
@@ -42,7 +46,6 @@ body{
 	
 	width: 30%;
 	height: 80%;
-	box-sizing: border-box;
 	
 	border: 8px ridge gold;
 	border-left: 2px;
@@ -75,6 +78,10 @@ td {
 	border: 1px solid black;
 	margin: 0px;
 	padding: 4px;
+}
+
+.score-field {
+	color: #888;
 }
 
 .die {

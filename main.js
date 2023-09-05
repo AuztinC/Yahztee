@@ -7,11 +7,13 @@
 // make dice objects
 
 // give dice methods and properties to generate and display random numbers
-
+const rollBtn = document.querySelector('.roll-button')
 let dice = [];
 let totalScore = 0;
 let upperScore = 0;
 let bonus = false;
+
+let rollNum = 0;
 
 
 
@@ -20,13 +22,35 @@ for (i = 0; i < 5; i++) {
 }
 
 // Roll();
+let state = {
+	aces: ()=>checkNumber(1, "aces"),
+	twos: ()=>checkNumber(2, "twos"),
+	threes: ()=>checkNumber(3, "threes"),
+	fours: ()=>checkNumber(4, "fours"),
+	fives: ()=>checkNumber(5, "fives"),
+	sixes: ()=>checkNumber(6, "sixes"),
+	
+	bonusCheck: ()=>bonusCheck(),
+	
+	chance: ()=>chance(),
+	
+	howManyNums: ()=>howManyNums(),
+
+}
 
 function Roll() {
-	for (i = 0; i < 5; i++) {
-		dice[i].roll();
+	if(rollNum < 3){
+		for (i = 0; i < 5; i++) {
+			dice[i].roll();
+		}
+		
+		for(let key in state){
+			state[key]()
+		}
+	} else {
+		rollBtn.disabled = true
 	}
-	sumDice(dice);
-	bonusCheck();
+	rollNum++
 }
 
 
@@ -56,24 +80,52 @@ function Die_obj() {
 			self.container.addClass("active");
 		}
 	}
-	
-	
 }
 
-function sumDice(){
+function chance(){
 	let diceSum = 0;
 	for(let i = 0; i < dice.length; i++){
 		diceSum += dice[i].value;
 	}
+	document.getElementById("chance").innerHTML = diceSum;
 	// console.log(diceSum)
 }
-
-
 
 function bonusCheck(){
 	if(upperScore >= 63){
 		bonus = true;
 	}
+}
+
+function checkNumber(num, elem) {
+	n = 0;
+	dice.forEach(d => {
+		if (d.value === num) {n++}
+	});
+	document.getElementById(elem).innerHTML = n * num;
+}
+function howManyNums(){
+	let totals = [0, 0, 0, 0, 0, 0]
+	for (let i = 1; i < 7; i++) {
+		dice.forEach((e) => {
+			if(e.value === i){
+				totals[i - 1]++
+			}
+		})
+	}
+	console.log(totals)
+}
+
+function Disable(elem) {
+	// elem.style.backgroundColor = "#333";
+	if(state[elem.id]){
+		elem.style.color = "black";
+		elem.style.fontWeight = "bold";
+		rollNum = 0;
+		rollBtn.disabled = false
+		delete state[elem.id]
+	}
+	console.log(state);
 }
 
 // ui
