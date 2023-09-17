@@ -1,9 +1,4 @@
 
-
-
-// 
-
-
 // make dice objects
 
 // give dice methods and properties to generate and display random numbers
@@ -39,7 +34,14 @@ let state = {
 }
 
 function Roll() {
-	if(rollNum < 3){
+	if(rollNum <= 2){
+		if (rollNum === 0) {
+			dice.forEach(di=>{
+				di.container.addClass('active');
+				di.active = true;
+			})
+		}
+		
 		for (i = 0; i < 5; i++) {
 			dice[i].roll();
 		}
@@ -47,9 +49,12 @@ function Roll() {
 		for(let key in state){
 			state[key]()
 		}
-	} else {
-		rollBtn.disabled = true
-	}
+		
+		if (rollNum == 2) {
+			rollBtn.disabled = true
+		}
+		
+	} 
 	rollNum++
 }
 
@@ -57,12 +62,14 @@ function Roll() {
 function Die_obj() {
 	let self = this;
 	
-	self.active = true;
+	self.active = false;
 	self.value = 1;
 	self.container = $("<div class='die'>1</div>");
 	self.container.appendTo("#dice-container");
-	self.container.addClass("active");
-	self.container.click(function (e) {self.toggle()});
+	// self.container.addClass("active");	
+	self.container.click(function(e){ 
+		if(rollNum !== 0)self.toggle() 
+	});
 	
 	self.roll = function() {
 		if (self.active) {
@@ -72,13 +79,10 @@ function Die_obj() {
 	}
 	
 	self.toggle = function() {
-		if (self.active) {
-			self.active = false;
-			self.container.removeClass("active");
-		} else {
-			self.active = true;
-			self.container.addClass("active");
-		}
+		
+		self.active = !self.active;
+		self.container.toggleClass("active");
+		
 	}
 }
 
@@ -104,6 +108,7 @@ function checkNumber(num, elem) {
 	});
 	document.getElementById(elem).innerHTML = n * num;
 }
+
 function howManyNums(){
 	let totals = [0, 0, 0, 0, 0, 0]
 	for (let i = 1; i < 7; i++) {
@@ -113,19 +118,49 @@ function howManyNums(){
 			}
 		})
 	}
+	
+	// check yahtzee
+	
+	let y = false;
+	let threeOfKind = 0;
+	let fourOfKind = 0;
+	let fullHouse = false
+	totals.forEach( (t, i) => {
+		console.log(t * (i+1))
+		t===5 ? y = true : null;
+		if (t===4) {
+			fourOfKind = (4 * (i+1));
+			threeOfKind = (3 * (i+1));
+		}
+		if(t >= 3){
+			
+			 threeOfKind = (3 * (i+1));
+		}
+	});
+	
+	document.getElementById("yahztee").innerHTML = 50 * y;
+	document.getElementById("fourOfKind").innerHTML = fourOfKind;
+	document.getElementById("threeOfKind").innerHTML = threeOfKind;
+	
+	
+	
+	
+	
 	console.log(totals)
 }
 
-function Disable(elem) {
-	// elem.style.backgroundColor = "#333";
+function writeScore(elem) {
 	if(state[elem.id]){
 		elem.style.color = "black";
 		elem.style.fontWeight = "bold";
 		rollNum = 0;
 		rollBtn.disabled = false
+		dice.forEach(di=>{
+			di.container.text("1")
+			di.container.removeClass('active')
+		})
 		delete state[elem.id]
 	}
-	console.log(state);
 }
 
 // ui

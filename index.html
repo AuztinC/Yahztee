@@ -10,75 +10,74 @@
 	<title>Yahztee!</title>
 </head>
 <body>
-	<div id="game-container">
-		
-		<div id="dice-container">
+	<div id="app-container">
+		<div id="game-container">
 			
-		</div>
-		<div id="list-container">
-			<table id="upper-section" class="score-section">
-				<tr class="table-row">
-					<td> Aces = 1 </td>
-					<td class="score-field" id="aces" onclick="Disable(this)">Your 1s</td>
-				</tr>
-				<tr class="table-row">
-					<td> Twos = 2 </td>
-					<td class="score-field" id="twos" onclick="Disable(this)">Your 2s</td>
-				</tr>
-				<tr class="table-row">
-					<td> Threes = 3 </td>
-					<td class="score-field" id="threes" onclick="Disable(this)">Your 3s</td>
-				</tr>
-				<tr class="table-row">
-					<td> Fours = 4 </td>
-					<td class="score-field" id="fours" onclick="Disable(this)">Your 4s</td>
-				</tr>
-				<tr class="table-row">
-					<td> Fives = 5 </td>
-					<td class="score-field" id="fives" onclick="Disable(this)">Your 5s</td>
-				</tr>
-				<tr class="table-row">
-					<td> Sixes = 6 </td>
-					<td class="score-field" id="sixes" onclick="Disable(this)">Your 6s</td>
-				</tr>
-				<tr class="table-row">
-					<td> Total Score -> </td>
-					<td class="score-field" id="upperScore">Your total score</td>
-				</tr>
-				<tr class="table-row">
-					<td> Bonus<br>(if total score is 63 or over)</td>
-					<td class="score-field" id="bonus">Your bonus</td>
-				</tr>
-				<table id="lower-section" class="score-section"> 
-				<tr class="table-row">
-					<td> Three of a kind = Total of Dice </td>
-					<td class="score-field" id="threeOfKind" onclick="Disable(this)">Your 3 of kind</td>
-				<tr class="table-row">
-					<td> Four of a kind = Total of Dice </td>
-					<td class="score-field" id="fourOfKind" onclick="Disable(this)">Your 4 of kind</td>	
-				<tr class="table-row">
-					<td> Full House </td>
-					<td class="score-field" id="fullHouse" onclick="Disable(this)">25</td>
-				<tr class="table-row">
-					<td> Small Stright <br> Sequence of 4</td>
-					<td class="score-field" id="smallStraight" onclick="Disable(this)">30</td>	
-				<tr class="table-row">
-					<td> Large Straight <br> Sequence of 5</td>
-					<td class="score-field" id="largeStraight" onclick="Disable(this)">40</td>
-				<tr class="table-row">
-					<td> Yahtzee </td>
-					<td class="score-field" id="yahztee" onclick="Disable(this)">50</td>	
-				<tr class="table-row">
-					<td> Chance <br> total of all five die</td>
-					<td class="score-field" id="chance" onclick="Disable(this)">Your Chance</td>	
+			<div id="dice-container"></div>
+			<div id="list-container">
+				<table id="upper-section" class="score-section">
+					<tr class="table-row">
+						<td> Aces = 1 </td>
+						<td class="score-field" id="aces" onclick="writeScore(this)">Your 1s</td>
+					</tr>
+					<tr class="table-row">
+						<td> Twos = 2 </td>
+						<td class="score-field" id="twos" onclick="writeScore(this)">Your 2s</td>
+					</tr>
+					<tr class="table-row">
+						<td> Threes = 3 </td>
+						<td class="score-field" id="threes" onclick="writeScore(this)">Your 3s</td>
+					</tr>
+					<tr class="table-row">
+						<td> Fours = 4 </td>
+						<td class="score-field" id="fours" onclick="writeScore(this)">Your 4s</td>
+					</tr>
+					<tr class="table-row">
+						<td> Fives = 5 </td>
+						<td class="score-field" id="fives" onclick="writeScore(this)">Your 5s</td>
+					</tr>
+					<tr class="table-row">
+						<td> Sixes = 6 </td>
+						<td class="score-field" id="sixes" onclick="writeScore(this)">Your 6s</td>
+					</tr>
+					<tr class="table-row">
+						<td> Total Score -> </td>
+						<td class="score-field" id="upperScore">Your total score</td>
+					</tr>
+					<tr class="table-row">
+						<td> Bonus<br>(if total score is 63 or over)</td>
+						<td class="score-field" id="bonus">Your bonus</td>
+					</tr>
+					<table id="lower-section" class="score-section"> 
+					<tr class="table-row">
+						<td> Three of a kind = Total of Dice </td>
+						<td class="score-field" id="threeOfKind" onclick="writeScore(this)">Your 3 of kind</td>
+					<tr class="table-row">
+						<td> Four of a kind = Total of Dice </td>
+						<td class="score-field" id="fourOfKind" onclick="writeScore(this)">Your 4 of kind</td>	
+					<tr class="table-row">
+						<td> Full House </td>
+						<td class="score-field" id="fullHouse" onclick="writeScore(this)">25</td>
+					<tr class="table-row">
+						<td> Small Stright <br> Sequence of 4</td>
+						<td class="score-field" id="smallStraight" onclick="writeScore(this)">30</td>	
+					<tr class="table-row">
+						<td> Large Straight <br> Sequence of 5</td>
+						<td class="score-field" id="largeStraight" onclick="writeScore(this)">40</td>
+					<tr class="table-row">
+						<td> Yahtzee </td>
+						<td class="score-field" id="yahztee" onclick="writeScore(this)">50</td>	
+					<tr class="table-row">
+						<td> Chance <br> total of all five die</td>
+						<td class="score-field" id="chance" onclick="writeScore(this)">Your Chance</td>	
+				</table>
 			</table>
-		</table>
-			<button class="roll-button" onclick="Roll()">
-				roll
-			</button>
+				<button class="roll-button" onclick="Roll()">
+					roll
+				</button>
+			</div>
 		</div>
 	</div>
-	
 </body>
 
 

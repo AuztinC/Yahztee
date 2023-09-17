@@ -1,4 +1,11 @@
+@font-face {
+	font-family: dice;
+	src: url("./dice.otf") format("opentype");
+}
+
 * {
+	margin: 0px;
+	padding: 0px;
 	user-select: none;
 	box-sizing: border-box;
 }
@@ -6,36 +13,49 @@
 body{
 	width: 100vw;
 	height: 100vh;
-	margin: 0;
 	overflow: hidden;
 }
 
-#game-container{
+#app-container {
+	
 	display: flex; 
 	justify-content: center;
 	align-items: center; 
-	width: 100%;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background-color: maroon;
+}
+
+#game-container{
+	
+	display: flex; 
+	justify-content: center;
+	align-items: center; 
 	height: 100%;
 	background-color: darkred;
 	/* background-image: url("https://www.shutterstock.com/shutterstock/videos/8856988/thumb/1.jpg?ip=x480"); */
 	background-size: cover;
 	background-blend-mode: darken;
 }
+
 #dice-container{
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 	position: relative;
 	
-	width: 20%;
-	height: 80%;
+	width: 30vw;
+	height: 100%;
 	
 	border: 8px ridge gold;
 	background-color: lightseagreen;
 	background-image: url("https://media.freestocktextures.com/cache/9f/5b/9f5b497386d49390d7b7ca43acb68a33.jpg");
 	background-size: cover;
 	background-blend-mode: overlay;
+	
+	
 }
 
 #list-container{
@@ -44,8 +64,8 @@ body{
 	align-items: center;
 	justify-content: center;
 	
-	width: 30%;
-	height: 80%;
+	width: 70%;
+	height: 100%;
 	
 	border: 8px ridge gold;
 	border-left: 2px;
@@ -55,15 +75,19 @@ body{
 	background-blend-mode: luminosity;
 	background-size: cover;
 	
+	
 }
 
 .score-section {
+	/* display: block; */
 	background-color: floralwhite;
 	border-collapse: collapse;
 	
 	border: 4px double black;
 	flex-grow: 1;
 	min-width: 80%;
+	font-size: 2vh;
+	/* height: 0px; */
 	/* padding: 24px; */
 }
 
@@ -76,7 +100,6 @@ body{
 
 td {
 	border: 1px solid black;
-	margin: 0px;
 	padding: 4px;
 }
 
@@ -85,6 +108,7 @@ td {
 }
 
 .die {
+	font-family: dice;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -95,10 +119,15 @@ td {
 	background-color: grey;
 	color: black;
 	user-select: none;
+	
+	box-sizing: border-box;
+	border-bottom: 8px solid #444;
 }
 
 .active {
 	background-color: white;
+	border-bottom: 8px solid lightgray;
 }
+
 
 
