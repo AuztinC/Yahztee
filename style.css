@@ -6,6 +6,7 @@
 * {
 	margin: 0px;
 	padding: 0px;
+	-webkit-user-select: none;
 	user-select: none;
 	box-sizing: border-box;
 }
@@ -17,10 +18,10 @@ body{
 }
 
 #app-container {
-	
-	display: flex; 
+
+	display: flex;
 	justify-content: center;
-	align-items: center; 
+	align-items: center;
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
@@ -28,10 +29,10 @@ body{
 }
 
 #game-container{
-	
-	display: flex; 
+
+	display: flex;
 	justify-content: center;
-	align-items: center; 
+	align-items: center;
 	height: 100%;
 	background-color: darkred;
 	/* background-image: url("https://www.shutterstock.com/shutterstock/videos/8856988/thumb/1.jpg?ip=x480"); */
@@ -45,17 +46,17 @@ body{
 	justify-content: space-evenly;
 	align-items: center;
 	position: relative;
-	
+
 	width: 30vw;
 	height: 100%;
-	
+
 	border: 8px ridge gold;
 	background-color: lightseagreen;
 	background-image: url("https://media.freestocktextures.com/cache/9f/5b/9f5b497386d49390d7b7ca43acb68a33.jpg");
 	background-size: cover;
 	background-blend-mode: overlay;
-	
-	
+
+
 }
 
 #list-container{
@@ -63,32 +64,33 @@ body{
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	
+
 	width: 70%;
 	height: 100%;
-	
+
 	border: 8px ridge gold;
 	border-left: 2px;
-	
+
 	background-color: burlywood;
 	background-image: url("https://media.freestocktextures.com/cache/4d/e6/4de6261b970deb804e557b9bb1dd44ad.jpg");
 	background-blend-mode: luminosity;
 	background-size: cover;
-	
-	
+
+
 }
 
 .score-section {
 	/* display: block; */
 	background-color: floralwhite;
 	border-collapse: collapse;
-	
+	width: 100%;
 	border: 4px double black;
 	flex-grow: 1;
 	min-width: 80%;
 	font-size: 2vh;
-	/* height: 0px; */
-	/* padding: 24px; */
+}
+.score-section td:nth-child(even) {
+	width: 45%;
 }
 
 .roll-button {
@@ -108,18 +110,18 @@ td {
 }
 
 .die {
+	font-size: 2rem;
 	font-family: dice;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 10px;
 	margin: 5px;
-	width: 75px;
-	height: 75px;
+	width: 125px;
+	height: 125px;
 	background-color: grey;
 	color: black;
-	user-select: none;
-	
+
 	box-sizing: border-box;
 	border-bottom: 8px solid #444;
 }
@@ -127,6 +129,13 @@ td {
 .active {
 	background-color: white;
 	border-bottom: 8px solid lightgray;
+}
+
+@media screen and (max-width: 750px) {
+	.die{
+		width: 75px;
+		height: 75px;
+	}
 }
 
 

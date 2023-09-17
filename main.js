@@ -24,11 +24,19 @@ let state = {
 	fours: ()=>checkNumber(4, "fours"),
 	fives: ()=>checkNumber(5, "fives"),
 	sixes: ()=>checkNumber(6, "sixes"),
-	
+
 	bonusCheck: ()=>bonusCheck(),
-	
+
+	threeOfKind: ()=>threeOfKind(),
+	fourOfKind: ()=>fourOfKind(),
+
+	fullHouse: ()=>fullHouse,
+
+	smallStraight: ()=>smallStraight(),
+	largeStraight: ()=>largeStraight(),
+
 	chance: ()=>chance(),
-	
+
 	howManyNums: ()=>howManyNums(),
 
 }
@@ -41,49 +49,67 @@ function Roll() {
 				di.active = true;
 			})
 		}
-		
+
 		for (i = 0; i < 5; i++) {
 			dice[i].roll();
 		}
-		
+
 		for(let key in state){
 			state[key]()
 		}
-		
+
 		if (rollNum == 2) {
 			rollBtn.disabled = true
 		}
-		
-	} 
+
+	}
 	rollNum++
 }
 
 
 function Die_obj() {
 	let self = this;
-	
+
 	self.active = false;
 	self.value = 1;
 	self.container = $("<div class='die'>1</div>");
 	self.container.appendTo("#dice-container");
-	// self.container.addClass("active");	
-	self.container.click(function(e){ 
-		if(rollNum !== 0)self.toggle() 
+	// self.container.addClass("active");
+	self.container.click(function(e){
+		if(rollNum !== 0)self.toggle()
 	});
-	
+
 	self.roll = function() {
 		if (self.active) {
 			self.value = Math.floor(Math.random()*6)+1;
 			self.container.text(self.value);
 		}
 	}
-	
+
 	self.toggle = function() {
-		
+
 		self.active = !self.active;
 		self.container.toggleClass("active");
-		
+
 	}
+}
+
+function threeOfKind(){
+
+}
+function fourOfKind(){
+
+}
+function fullHouse(){
+	document.getElementById("fullHouse").innerHTML = 25;
+}
+function smallStraight(){
+	document.getElementById("smallStraight").innerHTML = 30;
+
+}
+function largeStraight(){
+	document.getElementById("largeStraight").innerHTML = 40;
+
 }
 
 function chance(){
@@ -94,6 +120,7 @@ function chance(){
 	document.getElementById("chance").innerHTML = diceSum;
 	// console.log(diceSum)
 }
+
 
 function bonusCheck(){
 	if(upperScore >= 63){
@@ -118,35 +145,38 @@ function howManyNums(){
 			}
 		})
 	}
-	
-	// check yahtzee
-	
+
 	let y = false;
 	let threeOfKind = 0;
 	let fourOfKind = 0;
+	let smallStraight = false
+	let largeStraight = false
+	let straightCheck = 0
 	let fullHouse = false
 	totals.forEach( (t, i) => {
-		console.log(t * (i+1))
 		t===5 ? y = true : null;
 		if (t===4) {
 			fourOfKind = (4 * (i+1));
-			threeOfKind = (3 * (i+1));
 		}
 		if(t >= 3){
-			
-			 threeOfKind = (3 * (i+1));
+			threeOfKind = (3 * (i+1));
+			totals.forEach(_t => _t === 2 ? fullHouse = true : null)
 		}
+		if(t === 1){
+			straightCheck++
+			if(straightCheck === 5){
+				largeStraight = true;
+			} else if (straightCheck === 4){
+				smallStraight = true;
+			}
+		}
+		console.log(straightCheck, smallStraight, largeStraight)
 	});
-	
+
 	document.getElementById("yahztee").innerHTML = 50 * y;
 	document.getElementById("fourOfKind").innerHTML = fourOfKind;
 	document.getElementById("threeOfKind").innerHTML = threeOfKind;
-	
-	
-	
-	
-	
-	console.log(totals)
+
 }
 
 function writeScore(elem) {
